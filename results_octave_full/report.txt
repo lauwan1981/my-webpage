@@ -1,0 +1,132 @@
+Terra active-valley margin study, code 4.0.0, manuscript V5.3 submission candidate, run mode full
+Started 2026-11-01 11:56:07 on GNU Octave 10.3.0 (x86_64-conda-linux-gnu); resumed 0 time(s)
+
+1. PROVENANCE AND MANUSCRIPT ACTIONS
+- Structural model: Sanfedino F, Alazard D, Kassarian E, Somers F. Satellite dynamics toolbox library: a tool to model multi-body space systems for robust control synthesis and analysis. IFAC-PapersOnLine 56(2):9153-9160, 2023 (arXiv:2303.15872), Table 1 and Section 3.1.
+- The model is not the 2024 European Satellite Benchmark (Sanfedino et al., IFAC-PapersOnLine 2024); the manuscript must cite the 2023 source.
+- Controller: User-supplied V5.4 controller: decentralized PD on star-tracker attitude and gyro rate, second-order roll-off, common 10 ms loop delay.
+- Damping: Cantilever (appendage) modal damping as in SDTlib, i.e. non-classical damping at system level; the system-level modal expansion therefore uses complex modes.
+- Implementation: Continuous-time controller with an exact transport delay. Sampling and zero-order hold are not modeled; state this in the manuscript or add them.
+- Declared assumptions (not in the source): rated torque [1 1 1] N m (W_u primary), alternate W_u [1 0.8 1.2], truncation cutoff 30 rad/s, noise intensities treated as two-sided.
+
+2. SELF-CHECKS (double precision; all passed: 1)
+- complex modal plant vs SDTlib dynamic-mass form: 1.11e-14
+- additivity G_full - G_des - G_res: 1.93e-16
+- fast diagnostic kernel vs loop response (alternate W_u): 2.23e-16
+- modal loop vs state-space interconnection: 5.09e-15
+- frequency-domain vs state-space closed-loop disturbance transfer: 8.09e-15
+- 180-degree periodicity of the band minimum: 3.66e-15
+- model rigid inertia diagonal [767.813 768.219 114.99] vs controller reference [768 768 115] kg m^2
+- coupled flexible modes (rad/s): [5.7431 8.7374 19.3 22.386 35.717 37.421], damping [0.00513 0.00777 0.005 0.0058 0.00505 0.0054]
+
+3. FULL VERSUS DESIGN MODEL (Figure 1)
+- nominal (0 deg, 10 ms): full b = 0.706769 at 1.2456 rad/s (stable_exact_delay, tau_dm 115.6 ms); design b = 0.706825 at 1.2458 rad/s (stable_exact_delay); max E_res 0.2332 at 37.568 rad/s; residual modes [35.717 37.421] rad/s; F_y auxiliary min 0.4423 at 1.027 rad/s
+- physical perturbation (90 deg, 10 ms): full b = 0.672415 at 37.8896 rad/s (stable_exact_delay, tau_dm 108.1 ms); design b = 0.703750 at 1.2251 rad/s (stable_exact_delay); max E_res 0.2935 at 37.894 rad/s; residual modes [35.748 37.714] rad/s; F_y auxiliary min 0.4404 at 1.012 rad/s
+  E_res > 0 only says that residual dynamics shrink the return-difference distance at that frequency; closed-loop status and responses are reported separately (Section 3.3).
+
+4. PARAMETER PATHS AND SWITCHES (Figure 2)
+- panel_angle (deg), primary scaling: b ranges 0.67241..0.70681; 0 of 37 points violate b >= 0.6667; checked points not proven stable: 0 of 37
+    confirmed_dominant_switch at 47.7095712 deg: b = 0.704733, omega 1.2325 <-> 37.7330 rad/s, slopes -4.742e-05 / -0.00109 per deg, third-valley gap 0.0171
+    confirmed_dominant_switch at 137.728398 deg: b = 0.705587, omega 37.7285 <-> 1.2353 rad/s, slopes 0.001087 / 5.529e-05 per deg, third-valley gap 0.0146
+- panel_angle (deg), alternate scaling: b ranges 0.67230..0.70491; 0 of 37 points violate b >= 0.6667; closed-loop stability not checked on this scaling
+    confirmed_dominant_switch at 45.8513018 deg: b = 0.702828, omega 1.2329 <-> 37.7213 rad/s, slopes -4.024e-05 / -0.001072 per deg, third-valley gap 0.0190
+    confirmed_dominant_switch at 139.919545 deg: b = 0.704034, omega 37.7150 <-> 1.2379 rad/s, slopes 0.001119 / 4.764e-05 per deg, third-valley gap 0.0158
+- loop_delay (s), primary scaling: b ranges 0.53409..0.71674; 14 of 30 points violate b >= 0.6667 (from 0.017 to 0.03); checked points not proven stable: 0 of 30
+    confirmed_dominant_switch at 0.011941625 s: b = 0.704616, omega 1.2456 <-> 22.6408 rad/s, slopes -1.109 / -8.726 per s, third-valley gap 0.0178
+- loop_delay (s), alternate scaling: b ranges 0.53395..0.71479; 14 of 30 points violate b >= 0.6667 (from 0.017 to 0.03); closed-loop stability not checked on this scaling
+    confirmed_dominant_switch at 0.0121782627 s: b = 0.702377, omega 1.2456 <-> 22.6393 rad/s, slopes -1.112 / -8.746 per s, third-valley gap 0.0186
+- mode3_frequency (rad/s), primary scaling: b ranges 0.69317..0.70677; 0 of 21 points violate b >= 0.6667; checked points not proven stable: 0 of 21
+    confirmed_dominant_switch at 31.0062432 rad/s: b = 0.706767, omega 32.9842 <-> 1.2456 rad/s, slopes 0.005678 / 7.114e-07 per rad/s, third-valley gap 0.0147
+
+5. ONE-SIDED DERIVATIVE VALIDATION (Section 4.3)
+- nominal (smooth region) (near-active valleys: 1)
+    damping_x +1: predicted 0.923777, smallest-step secant 0.923493, error 2.85e-04 (largest step 2.96e-02)
+    damping_x -1: predicted -0.923777, smallest-step secant -0.924062, error 2.84e-04 (largest step 2.73e-02)
+    loop_delay +1: predicted -1.10887, smallest-step secant -1.10887, error 1.52e-08 (largest step 1.35e-06)
+    loop_delay -1: predicted 1.10887, smallest-step secant 1.10887, error 1.48e-08 (largest step 1.35e-06)
+    mode3_frequency +1: predicted 4.77768e-07, smallest-step secant 4.77766e-07, error 2.78e-12 (largest step 2.03e-10)
+    mode3_frequency -1: predicted -4.77768e-07, smallest-step secant -4.77771e-07, error 2.78e-12 (largest step 2.03e-10)
+    panel_angle +1: predicted -1.44959e-05, smallest-step secant -1.4497e-05, error 1.02e-09 (largest step 1.06e-07)
+    panel_angle -1: predicted 1.44959e-05, smallest-step secant 1.44948e-05, error 1.11e-09 (largest step 1.06e-07)
+    rolloff_y +1: predicted 1.83985e-05, smallest-step secant 1.83961e-05, error 2.35e-09 (largest step 2.32e-07)
+    rolloff_y -1: predicted -1.83985e-05, smallest-step secant -1.84008e-05, error 2.35e-09 (largest step 2.38e-07)
+    rolloff_z +1: predicted 0.000341666, smallest-step secant 0.000341639, error 2.73e-08 (largest step 2.71e-06)
+    rolloff_z -1: predicted -0.000341666, smallest-step secant -0.000341693, error 2.73e-08 (largest step 2.75e-06)
+- panel_angle switch at 47.7095711844 (near-active valleys: 2)
+    damping_x +1: predicted -0.265595, smallest-step secant -0.265596, error 9.70e-07 (largest step 9.69e-05)
+    damping_x -1: predicted -0.986395, smallest-step secant -0.986624, error 2.29e-04 (largest step 2.20e-02)
+    panel_angle +1: predicted -0.00109026, smallest-step secant -0.00109026, error 1.70e-09 (largest step 1.67e-07)
+    panel_angle -1: predicted 4.74191e-05, smallest-step secant 4.74194e-05, error 3.39e-10 (largest step 3.37e-08)
+- panel_angle switch at 137.728397795 (near-active valleys: 2)
+    damping_x +1: predicted -0.323284, smallest-step secant -0.323285, error 8.93e-07 (largest step 8.91e-05)
+    damping_x -1: predicted -1.04414, smallest-step secant -1.04434, error 2.00e-04 (largest step 1.91e-02)
+    panel_angle +1: predicted 5.52911e-05, smallest-step secant 5.5291e-05, error 1.12e-10 (largest step 1.13e-08)
+    panel_angle -1: predicted -0.00108698, smallest-step secant -0.00108699, error 2.26e-09 (largest step 2.19e-07)
+- loop_delay switch at 0.0119416249948 (near-active valleys: 2)
+    damping_x +1: predicted -0.00187203, smallest-step secant -0.00187207, error 3.43e-08 (largest step 3.43e-06)
+    damping_x -1: predicted -0.921382, smallest-step secant -0.921667, error 2.85e-04 (largest step 2.74e-02)
+    loop_delay +1: predicted -8.72601, smallest-step secant -8.72601, error 4.73e-06 (largest step 4.73e-04)
+    loop_delay -1: predicted 1.10939, smallest-step secant 1.10939, error 1.32e-08 (largest step 1.34e-06)
+
+6. DRIFT RISK OF PHYSICAL PARAMETERS (D = h d, R = max(0, -D))
+- nominal: b = 0.706769 at 1.2456 rad/s
+    hub_inertia_zz   h=16       D+ -0.01008 (finite -0.02364)  D- +0.01008 (finite -0.05699 *)
+    hub_inertia_xx   h=15       D+ -0.00320 (finite -0.00346)  D- +0.00320 (finite +0.00284)
+    loop_delay       h=0.002    D+ -0.00222 (finite -0.00266 *)  D- +0.00222 (finite +0.00222)
+    mode1_frequency  h=1.12     D+ +0.00209 (finite +0.00151)  D- -0.00209 (finite -0.00318)
+    panel_angle      h=5        D+ -0.00007 (finite -0.00010)  D- +0.00007 (finite +0.00005)
+    hub_inertia_yy   h=8        D+ -0.00004 (finite -0.00005)  D- +0.00004 (finite +0.00003)
+    mode2_frequency  h=3.86     D+ +0.00003 (finite +0.00002)  D- -0.00003 (finite -0.00004)
+    hub_mass         h=200      D+ -0.00001 (finite -0.00001)  D- +0.00001 (finite +0.00002)
+    mode3_frequency  h=7.08     D+ +0.00000 (finite +0.00000)  D- -0.00000 (finite -0.01360 *)
+- physical perturbation: b = 0.672415 at 37.8896 rad/s
+    mode3_frequency  h=7.08     D+ +0.05559 (finite +0.03134 *)  D- -0.05559 (finite -0.04401 *)
+    loop_delay       h=0.002    D+ -0.01669 (finite -0.01645)  D- +0.01669 (finite +0.01690)
+    hub_inertia_yy   h=8        D+ +0.01638 (finite +0.01580)  D- -0.01638 (finite -0.01700)
+    mode1_frequency  h=1.12     D+ -0.00636 (finite -0.00730)  D- +0.00636 (finite +0.00547)
+    panel_angle      h=5        D+ -0.00049 (finite +0.00004)  D- +0.00049 (finite +0.00101)
+    hub_inertia_zz   h=16       D+ +0.00002 (finite +0.00001)  D- -0.00002 (finite -0.02371 *)
+    hub_mass         h=200      D+ +0.00001 (finite +0.00001)  D- -0.00001 (finite -0.00001)
+    mode2_frequency  h=3.86     D+ -0.00001 (finite -0.00001)  D- +0.00001 (finite +0.00000)
+    hub_inertia_xx   h=15       D+ +0.00000 (finite +0.00000)  D- -0.00000 (finite -0.00000)
+  * = the finite step moves the band minimum to another valley.
+
+7. REMEDIATION SCREENING (equal budgets, all moves verified for benchmarking)
+  rule active_set       paper Section 3.2: active-set D+/D- (near-active valleys)
+  rule branch_aware     branch-aware: first-order prediction of every tracked valley
+  rule spectrum_aware   spectrum-aware: every singular value at every valley
+  rule single_crossover conventional: main crossover valley only
+- active_set       top-1: optimum found 8/26, worst regret 0.02506, median cost 16% of exhaustive
+- active_set       top-2: optimum found 16/26, worst regret 0.00745, median cost 24% of exhaustive
+- branch_aware     top-1: optimum found 17/26, worst regret 0.02506, median cost 16% of exhaustive
+- branch_aware     top-2: optimum found 26/26, worst regret 0.00000, median cost 24% of exhaustive
+- spectrum_aware   top-1: optimum found 22/26, worst regret 0.02075, median cost 16% of exhaustive
+- spectrum_aware   top-2: optimum found 26/26, worst regret 0.00000, median cost 24% of exhaustive
+- single_crossover top-1: optimum found 2/26, worst regret 0.03522, median cost 16% of exhaustive
+- single_crossover top-2: optimum found 2/26, worst regret 0.03522, median cost 24% of exhaustive
+- Residual dynamics (Section 4.3): a residual-mode valley is the band minimum in 7/26 cases and in the near-active set in 7/26 cases; the design-model decision differs from the full-model branch_aware decision in 15/26 cases; observable pointing change (>1%) in 15/26 cases.
+- The design-model decision lowers the full-model margin in 10/26 cases.
+
+8. DENSE BASELINE (Table 2)
+- detection: method 140/140 (extra 0), dense 140/140 (extra 0); max band-minimum error method 3.33e-16, dense 7.82e-07; dense grid missed the target in 0 of 26 cases (largest rung used 256000 points)
+- median evaluations method 1941 vs dense 32000 (ratio 16.5); median time 380.1 ms vs 485.5 ms (ratio 1.3); shared model build 9.4 ms
+- switch location error: method {panel_angle 8.67e-13 deg; panel_angle 1.48e-12 deg; loop_delay 1.08e-16 s; mode3_frequency 4.65e-13 rad/s}; dense {panel_angle 7.29e-04 deg; panel_angle 3.86e-05 deg; loop_delay 8.48e-10 s; mode3_frequency 1.10e-04 rad/s}
+- single main crossover check misses the active valley in 16/26 cases (max overestimate 0.1066)
+
+9. TABLE 1 ROWS AND FIGURE 3
+- Full model, nominal             unchanged          b=0.70677 at 1.2456 rad/s, stable_exact_delay, tau_dm 115.6 ms, GM 10.66 dB PM 41.4 deg, APE ratio 0.56, step peak 216 urad
+- Design model, same controller   unchanged          b=0.70683 at 1.2458 rad/s, stable_exact_delay, tau_dm 115.6 ms, GM 10.66 dB PM 41.4 deg, APE ratio 0.56, step peak 216 urad
+- Physical perturbation           unchanged          b=0.67241 at 37.8896 rad/s, stable_exact_delay, tau_dm 108.1 ms, GM 9.69 dB PM 39.3 deg, APE ratio 0.56, step peak 216 urad
+- Feasible adjustment (physical)  rolloff_y -5       b=0.68259 at 37.8625 rad/s, stable_exact_delay, tau_dm 102.6 ms, GM 9.97 dB PM 39.9 deg, APE ratio 0.56, step peak 216 urad
+- Delay perturbation              unchanged          b=0.63143 at 22.6004 rad/s, stable_exact_delay, tau_dm 115.6 ms, GM 8.67 dB PM 36.8 deg, APE ratio 0.56, step peak 217 urad
+- Feasible adjustment (delay)     rolloff_z +5       b=0.65650 at 22.6234 rad/s, stable_exact_delay, tau_dm 115.6 ms, GM 9.28 dB PM 38.3 deg, APE ratio 0.56, step peak 216 urad
+- Figure 3, physical perturbation: conventional "unchanged" b=0.67241 vs active-branch "rolloff_y -5" b=0.68259 (difference +0.01017); verifiably different decision: 1
+- Figure 3, delay perturbation: conventional "unchanged" b=0.63143 vs active-branch "rolloff_z +5" b=0.65650 (difference +0.02507); verifiably different decision: 1
+
+10. EVIDENCE LEVELS AND LIMITATIONS
+- Exact: singular-value derivative formulas, delay-margin crossing condition, additivity of the complex modal truncation.
+- Numerical (double precision, not interval arithmetic): eigenvalues, Newton-refined exact-delay roots, tail bounds, all self-checks.
+- Empirical (finite grids): completeness of the valley lists, switch locations, screening statistics, timing (this machine only).
+- Not covered: sampled-data implementation, actuator rate limits and friction, model uncertainty beyond the listed corners, flight data, physical attribution of valleys to modes (counterfactuals only).
+
+Total study time 897.6 s.

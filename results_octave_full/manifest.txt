@@ -1,0 +1,286 @@
+REPRODUCIBILITY MANIFEST
+interpreter: GNU Octave 10.3.0
+platform: x86_64-conda-linux-gnu
+processor: not exposed
+logical processors: not exposed
+started: 2026-11-01 11:56:07
+resumed: 0 time(s)
+toolboxes: none (base MATLAB R2015a or later)
+
+CONFIGURATION
+configuration.metadata.studyName = 'Terra active-valley margin study'
+configuration.metadata.codeVersion = '4.0.0'
+configuration.metadata.manuscriptVersion = 'V5.3 submission candidate'
+configuration.metadata.runMode = 'full'
+configuration.provenance.structuralModel = 'Sanfedino F, Alazard D, Kassarian E, Somers F. Satellite dynamics toolbox library: a tool to model multi-body space systems for robust control synthesis and analysis. IFAC-PapersOnLine 56(2):9153-9160, 2023 (arXiv:2303.15872), Table 1 and Section 3.1.'
+configuration.provenance.notTheBenchmark = 'The model is not the 2024 European Satellite Benchmark (Sanfedino et al., IFAC-PapersOnLine 2024); the manuscript must cite the 2023 source.'
+configuration.provenance.controller = 'User-supplied V5.4 controller: decentralized PD on star-tracker attitude and gyro rate, second-order roll-off, common 10 ms loop delay.'
+configuration.provenance.dampingModel = 'Cantilever (appendage) modal damping as in SDTlib, i.e. non-classical damping at system level; the system-level modal expansion therefore uses complex modes.'
+configuration.provenance.controllerImplementation = 'Continuous-time controller with an exact transport delay. Sampling and zero-order hold are not modeled; state this in the manuscript or add them.'
+configuration.structure.hubMassKilograms = 1000
+configuration.structure.hubInertiaKilogramMetersSquared = [75 1 2;1 40 -1;2 -1 80]
+configuration.structure.hubCenterOfMassMeters = [0.35;1.5;0.5]
+configuration.structure.panelAttachmentPointsMeters{1} = [0.4;1.4;1]
+configuration.structure.panelAttachmentPointsMeters{2} = [0.4;1.4;0]
+configuration.structure.panelReferenceFrames{1} = [0 -1 0;0 0 -1;1 0 0]
+configuration.structure.panelReferenceFrames{2} = [0 1 0;0 0 -1;-1 0 0]
+configuration.structure.panelRotationSigns = [1 -1]
+configuration.structure.panelMassKilograms = 43
+configuration.structure.panelInertiaAtCenterOfMassKilogramMetersSquared = [17 0 0;0 62 0;0 0 80]
+configuration.structure.panelCenterOfMassOffsetMeters = [2.07;0;0]
+configuration.structure.cantileverModeFrequenciesRadiansPerSecond = [5.6 19.3 35.4]
+configuration.structure.cantileverModeDampingRatio = 0.005
+configuration.structure.modalParticipationFactors = [0 0 -5.12 0 12.5 0;0 0 0 -3.84 0 0;0 0 -2.97 0 2.51 0]
+configuration.structure.hubMassRelativeUncertainty = 0.2
+configuration.structure.hubInertiaDiagonalRelativeUncertainty = 0.2
+configuration.structure.modeFrequencyRelativeUncertainty = 0.2
+configuration.model.realEigenvalueRelativeTolerance = 1e-10
+configuration.model.modalReconstructionTolerance = 1e-09
+configuration.model.selfCheckFrequenciesRadiansPerSecond = [0.5 3 10 22 40]
+configuration.model.selfCheckTolerance = 1e-08
+configuration.model.lightDampingThreshold = 0.2
+configuration.operatingPoint.panelAngleDegrees = 0
+configuration.operatingPoint.delaySeconds = 0.01
+configuration.operatingPoint.hubMassScale = 1
+configuration.operatingPoint.hubInertiaDiagonalScale = [1;1;1]
+configuration.operatingPoint.cantileverFrequencyScale = [1;1;1]
+configuration.actuator.wheelNaturalFrequencyRadiansPerSecond = 628.318530718
+configuration.actuator.wheelDampingRatio = 0.7
+configuration.actuator.ratedTorqueNewtonMeters = [1;1;1]
+configuration.sensors.starTrackerBandwidthRadiansPerSecond = 50.2654824574
+configuration.sensors.gyroBandwidthRadiansPerSecond = 1256.63706144
+configuration.sensors.starTrackerNoiseIntensityRadiansSquaredSeconds = 1e-08
+configuration.sensors.gyroNoiseIntensityRadiansSquaredPerSecond = 1e-10
+configuration.controller.referenceInertiaKilogramMetersSquared = [768;768;115]
+configuration.controller.bandwidthRadiansPerSecond = 0.998
+configuration.controller.dampingRatio = [0.446;0.446;0.446]
+configuration.controller.rolloffFrequencyRadiansPerSecond = [42.89;42.89;42.89]
+configuration.controller.versionLabel = 'V5.4'
+configuration.requirements.inputSensitivityPeakBound = 1.5
+configuration.requirements.diskMarginRequirement = 0.666666666667
+configuration.requirements.absolutePointingErrorRadians = [6.98131700798e-05;6.98131700798e-05;0.000349065850399]
+configuration.requirements.orbitalDisturbanceTorqueNewtonMeters = [0.03;0.01;0.02]
+configuration.scaling.primaryActuatorScale = [1;1;1]
+configuration.scaling.alternateActuatorScale = [1;0.8;1.2]
+configuration.scaling.measurementScale = [1;1;1;1;1;1]
+configuration.truncation.ruleDescription = 'Retain coupled (system) flexible modes whose undamped natural frequency does not exceed the cutoff; remove the others; no static correction.'
+configuration.truncation.designModeCutoffRadiansPerSecond = 30
+configuration.truncation.residualAssociationLogWindow = 0.05
+configuration.search.bandRadiansPerSecond = [0.1 100]
+configuration.search.initialGridPointCount = 1500
+configuration.search.modalNeighbourhoodHalfCount = 6
+configuration.search.modalNeighbourhoodOffsetStepInDampingUnits = 0.5
+configuration.search.refinementToleranceLogFrequency = 1e-10
+configuration.search.secondaryRefinementRelativeTolerance = 1e-12
+configuration.search.secondaryBracketGridCells = 1.5
+configuration.search.goldenSectionMaximumIterations = 200
+configuration.search.brentMaximumIterations = 200
+configuration.search.curvatureStepLogFrequency = 0.0001
+configuration.search.curvatureFloor = 1e-06
+configuration.search.valueErrorFloor = 1e-12
+configuration.search.nearActiveEngineeringResolution = 0.001
+configuration.search.nearActiveErrorMultiplier = 10
+configuration.search.modelFrequencyResolutionRelative = 0.01
+configuration.search.unresolvedGridCellCount = 2
+configuration.search.repeatedSingularValueTolerance = 1e-07
+configuration.search.evaluationChunkSize = 20000
+configuration.baseline.referenceGridPointCount = 32000
+configuration.baseline.referenceRefinementRelativeTolerance = 1e-12
+configuration.baseline.denseGridLadder = [1000 2000 4000 8000 16000 32000 64000 128000 256000 512000]
+configuration.baseline.targetMinimumValueError = 1e-06
+configuration.baseline.matchFrequencyToleranceLog = 0.001
+configuration.baseline.matchValueTolerance = 1e-05
+configuration.baseline.timingRepeatCount = 3
+configuration.baseline.switchBisectionTolerances.panel_angle = 1e-12
+configuration.baseline.switchBisectionTolerances.loop_delay = 1e-16
+configuration.baseline.switchBisectionTolerances.mode3_frequency = 1e-12
+configuration.baseline.switchBisectionMaximumIterations = 60
+configuration.baseline.switchReferenceWindowLog = 0.01
+configuration.tails.extensionFactor = 10
+configuration.tails.maximumExtensionCount = 3
+configuration.paths.angularPeriodDegrees = 180
+configuration.paths.panelAngleDegrees = [0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 105 110 115 120 125 130 135 140 145 150 155 160 165 170 175 180]
+configuration.paths.delaySeconds = [0.001 0.002 0.003 0.004 0.005 0.006 0.007 0.008 0.009 0.01 0.011 0.012 0.013 0.014 0.015 0.016 0.017 0.018 0.019 0.02 0.021 0.022 0.023 0.024 0.025 0.026 0.027 0.028 0.029 0.03]
+configuration.paths.mode3FrequencyRadiansPerSecond = [28.32 29.028 29.736 30.444 31.152 31.86 32.568 33.276 33.984 34.692 35.4 36.108 36.816 37.524 38.232 38.94 39.648 40.356 41.064 41.772 42.48]
+configuration.paths.periodicityCheckAnglesDegrees = [15 45 90]
+configuration.paths.branchMatchGateLog = 0.15
+configuration.paths.localBranchWindowLog = 0.05
+configuration.paths.branchWindowGrowth = 1.5
+configuration.paths.branchWindowEdgeFraction = 0.05
+configuration.paths.switchRootTolerance.panel_angle = 1e-11
+configuration.paths.switchRootTolerance.loop_delay = 1e-16
+configuration.paths.switchRootTolerance.mode3_frequency = 1e-12
+configuration.paths.transversalityStep.panel_angle = 0.001
+configuration.paths.transversalityStep.loop_delay = 1e-06
+configuration.paths.transversalityStep.mode3_frequency = 0.0001
+configuration.paths.swapCheckStepMultiplier = 10
+configuration.paths.switchEqualityTolerance = 1e-06
+configuration.paths.minimumSlopeDifference = 1e-09
+configuration.derivatives.physicalFiniteDifferenceRelativeStep = 1e-05
+configuration.derivatives.physicalFiniteDifferenceAbsoluteFloor = 1e-06
+configuration.derivatives.secantStepFractions = [1 0.3 0.1 0.03 0.01]
+configuration.derivatives.secantBaseSteps.damping_x = 0.001
+configuration.derivatives.secantBaseSteps.damping_y = 0.001
+configuration.derivatives.secantBaseSteps.damping_z = 0.001
+configuration.derivatives.secantBaseSteps.rolloff_x = 0.1
+configuration.derivatives.secantBaseSteps.rolloff_y = 0.1
+configuration.derivatives.secantBaseSteps.rolloff_z = 0.1
+configuration.derivatives.secantBaseSteps.panel_angle = 0.1
+configuration.derivatives.secantBaseSteps.loop_delay = 1e-05
+configuration.derivatives.secantBaseSteps.mode3_frequency = 0.01
+configuration.derivatives.smoothRegionControlParameters{1} = 'damping_x'
+configuration.derivatives.smoothRegionControlParameters{2} = 'rolloff_y'
+configuration.derivatives.smoothRegionControlParameters{3} = 'rolloff_z'
+configuration.derivatives.smoothRegionPhysicalParameters{1} = 'panel_angle'
+configuration.derivatives.smoothRegionPhysicalParameters{2} = 'loop_delay'
+configuration.derivatives.smoothRegionPhysicalParameters{3} = 'mode3_frequency'
+configuration.derivatives.switchPointParameters{1} = 'damping_x'
+configuration.derivatives.switchPointParameters{2} = 'path_parameter'
+configuration.physicalParameters.panelAngleStepDegrees = 5
+configuration.physicalParameters.delayStepSeconds = 0.002
+configuration.remediation.dampingStep = 0.05
+configuration.remediation.rolloffStepRadiansPerSecond = 5
+configuration.remediation.dampingBounds = [0.2 1]
+configuration.remediation.rolloffBoundsRadiansPerSecond = [20 80]
+configuration.remediation.screeningBudgets = [1 2]
+configuration.remediation.primaryBudget = 2
+configuration.remediation.primaryRule = 'branch_aware'
+configuration.remediation.conventionalRule = 'single_crossover'
+configuration.remediation.ruleNames{1} = 'active_set'
+configuration.remediation.ruleNames{2} = 'branch_aware'
+configuration.remediation.ruleNames{3} = 'spectrum_aware'
+configuration.remediation.ruleNames{4} = 'single_crossover'
+configuration.remediation.ruleDescriptions{1} = 'paper Section 3.2: active-set D+/D- (near-active valleys)'
+configuration.remediation.ruleDescriptions{2} = 'branch-aware: first-order prediction of every tracked valley'
+configuration.remediation.ruleDescriptions{3} = 'spectrum-aware: every singular value at every valley'
+configuration.remediation.ruleDescriptions{4} = 'conventional: main crossover valley only'
+configuration.remediation.designModelRule = 'spectrum_aware'
+configuration.remediation.decisionEqualityTolerance = 1e-06
+configuration.remediation.observablePointingRelativeChange = 0.01
+configuration.cases.angleFamilyAnglesDegrees = [0 15 30 45 60 75 90 105 120 135 150 165 180]
+configuration.cases.delayFamilyDelaysSeconds = [0.012 0.014 0.016 0.018 0.02 0.022 0.025]
+configuration.cases.structuralFamilyAnglesDegrees = [0 90]
+configuration.cases.structuralFamilyMode3Scales = [0.8 1.2]
+configuration.cases.structuralFamilyHubInertiaScale = 0.8
+configuration.cases.showcasePhysicalAngleDegrees = 90
+configuration.cases.showcaseDelaySeconds = 0.02
+configuration.stability.chebyshevOrder = 24
+configuration.stability.chebyshevConvergenceOrder = 48
+configuration.stability.rightmostRootRefineCount = 12
+configuration.stability.newtonMaximumIterations = 30
+configuration.stability.newtonStepTolerance = 1e-12
+configuration.stability.newtonResidualTolerance = 1e-09
+configuration.stability.rootAgreementTolerance = 1e-06
+configuration.stability.delayMarginGridPointCount = 6000
+configuration.stability.delayMarginRootTolerance = 1e-12
+configuration.response.peakSearchGridPointCount = 2400
+configuration.response.peakRefinementToleranceLogFrequency = 1e-09
+configuration.response.highFrequencyBandRadiansPerSecond = [32 45]
+configuration.response.noiseIntegrationBandRadiansPerSecond = [0.001 10000]
+configuration.response.noiseIntegrationGridPointCount = 6000
+configuration.response.simulationDurationSeconds = 120
+configuration.response.maximumTimeStepSeconds = 0.001
+configuration.response.disturbanceOnsetSeconds = 1
+configuration.response.steadyStateWindowSeconds = 20
+configuration.response.settlingBandFraction = 0.02
+configuration.response.storedSampleDecimation = 20
+configuration.figures.resolutionDotsPerInch = 300
+configuration.figures.formats{1} = 'png'
+configuration.figures.formats{2} = 'eps'
+configuration.figures.fontName = 'Helvetica'
+configuration.figures.fontSize = 9
+configuration.figures.titleFontSize = 10
+configuration.figures.lineWidth = 1.2
+configuration.figures.thinLineWidth = 0.8
+configuration.figures.markerSize = 5
+configuration.figures.doubleColumnWidthCentimeters = 17.5
+configuration.figures.standardHeightCentimeters = 13
+configuration.figures.tallHeightCentimeters = 17
+configuration.figures.pageHeightCentimeters = 22
+configuration.figures.layout.leftMarginCentimeters = 2.1
+configuration.figures.layout.rightMarginCentimeters = 0.4
+configuration.figures.layout.topMarginCentimeters = 0.8
+configuration.figures.layout.bottomMarginCentimeters = 1.3
+configuration.figures.layout.horizontalGapCentimeters = 2.4
+configuration.figures.layout.verticalGapCentimeters = 2.1
+configuration.figures.layout.legendColumnCentimeters = 4.8
+configuration.figures.layout.legendGapCentimeters = 0.3
+configuration.figures.layout.legendRowCentimeters = 0.45
+configuration.figures.layout.legendSampleStartCentimeters = 0.1
+configuration.figures.layout.legendSampleEndCentimeters = 0.9
+configuration.figures.layout.legendTextStartCentimeters = 1.1
+configuration.figures.layout.maximumLegendHeightFraction = 0.5
+configuration.figures.caseLabelInterval = 5
+configuration.figures.timeResponseDisplaySeconds = 30
+configuration.figures.bandAxisMargin = 1.25
+configuration.figures.remediationZoomBandRadiansPerSecond = [5 60]
+configuration.figures.remediationZoomTicksRadiansPerSecond = [5 10 20 40 60]
+configuration.figures.screenPositionPixels = [80 80 1100 820]
+configuration.figures.returnDifferenceAxisLimits = [0.5 1.2]
+configuration.figures.figure1AxisLimits = [0.5 1.3]
+configuration.figures.curveGridPointCount = 2400
+configuration.figures.branchAxisUpperLimit = 1
+configuration.figures.branchAxisLowerLimit = 0.5
+configuration.figures.branchAxisPadding = 0.05
+configuration.figures.legendFontReduction = 2
+configuration.figures.textInsetFraction = 0.02
+configuration.figures.categoryAxisPadding = 0.5
+configuration.figures.secantAxisPaddingFraction = 0.15
+configuration.figures.logAxisPaddingFactor = 1.3
+configuration.figures.referenceSlopeOffsetFactor = 3
+configuration.figures.rootPlotRealPartFloor = -1
+configuration.figures.rootPlotImaginaryLimit = 45
+configuration.figures.colors.full = [0 0.3 0.7]
+configuration.figures.colors.design = [0.85 0.33 0.1]
+configuration.figures.colors.envelope = [0 0 0]
+configuration.figures.colors.branch = [0.55 0.7 0.88]
+configuration.figures.colors.alternate = [0.45 0.45 0.45]
+configuration.figures.colors.requirement = [0.4 0.4 0.4]
+configuration.figures.colors.confirmed = [0.8 0 0]
+configuration.figures.colors.candidate = [0.95 0.6 0]
+configuration.figures.colors.unchanged = [0.2 0.2 0.2]
+configuration.figures.colors.baselineMove = [0.85 0.33 0.1]
+configuration.figures.colors.methodMove = [0 0.45 0.74]
+configuration.figures.colors.oracleMove = [0.47 0.67 0.19]
+configuration.figures.colors.designMove = [0.49 0.18 0.56]
+configuration.figures.axisColors{1} = [0 0.45 0.74]
+configuration.figures.axisColors{2} = [0.85 0.33 0.1]
+configuration.figures.axisColors{3} = [0.47 0.67 0.19]
+configuration.output.directoryPrefix = 'terra_results_v4'
+configuration.output.consoleProgress = true
+configuration.output.checkpointFileName = 'checkpoint.mat'
+
+FILES
+data/model_statespace.mat (5873 bytes)
+data/results.mat (3309697 bytes)
+figures/Fig1_return_difference.eps (317744 bytes)
+figures/Fig1_return_difference.png (87613 bytes)
+figures/Fig2_branches_switches.eps (210208 bytes)
+figures/Fig2_branches_switches.png (126952 bytes)
+figures/Fig3_remediation.eps (469416 bytes)
+figures/Fig3_remediation.png (145017 bytes)
+figures/FigS1_cost_comparison.eps (215246 bytes)
+figures/FigS1_cost_comparison.png (96053 bytes)
+figures/FigS2_decisions.eps (215530 bytes)
+figures/FigS2_decisions.png (103060 bytes)
+figures/FigS3_derivative_convergence.eps (202802 bytes)
+figures/FigS3_derivative_convergence.png (91862 bytes)
+figures/FigS4_residual_mode_path.eps (204621 bytes)
+figures/FigS4_residual_mode_path.png (91080 bytes)
+figures/figure_captions.txt (4019 bytes)
+manifest.txt (this file)
+report.txt (13849 bytes)
+tables/derivative_validation.csv (11499 bytes)
+tables/drift_risk.csv (3521 bytes)
+tables/mode_removal_counterfactual.csv (701 bytes)
+tables/model_comparison.csv (1882 bytes)
+tables/path_summary.csv (12388 bytes)
+tables/path_valleys.csv (123584 bytes)
+tables/remediation_cases.csv (13476 bytes)
+tables/remediation_summary.csv (2616 bytes)
+tables/stability.csv (11190 bytes)
+tables/switches.csv (1526 bytes)
+tables/table1_cases.csv (2746 bytes)
+tables/table2_dense_baseline.csv (8970 bytes)
+tables/table2_switch_locations.csv (634 bytes)
+tables/tables.md (4186 bytes)

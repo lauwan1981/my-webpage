@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terra 活动低谷裕度研究 v4：仿真结果</title>
+<style>
+  body {
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    color: #1f2328;
+    line-height: 1.6;
+    margin: 0;
+    background: #f6f8fa;
+  }
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+    background: #ffffff;
+  }
+  h1 { font-size: 1.6em; margin-bottom: 0.2em; }
+  h2 { font-size: 1.25em; border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; margin-top: 2em; }
+  .subtitle { color: #57606a; margin-top: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .links a {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #0969da;
+    background: #f6f8fa;
+  }
+  .links a:hover { background: #eaeef2; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.95em; }
+  th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: #f6f8fa; }
+  figure { margin: 24px 0; }
+  figure img { width: 100%; height: auto; border: 1px solid #d0d7de; }
+  figcaption { color: #57606a; font-size: 0.95em; margin-top: 6px; }
+  code { background: #eff1f3; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #eff1f3; padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .note { color: #57606a; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<main>
+<h1>柔性航天器闭环裕度竞争的活动低谷跟踪与整改方向判定</h1>
+<p class="subtitle">稿件 V5.3 的仿真程序 v4：评审结论、运行方法与全量运行结果（GNU Octave 10.3.0，898 s）</p>
+
+<div class="links">
+  <a href="https://github.com/lauwan1981/my-webpage">全部代码（GitHub）</a>
+  <a href="https://github.com/lauwan1981/my-webpage/archive/refs/heads/main.zip">下载全部文件（ZIP）</a>
+  <a href="https://github.com/lauwan1981/my-webpage/blob/main/REVIEW_AND_PLAN.md">v3 评审与修改方案</a>
+  <a href="https://github.com/lauwan1981/my-webpage/blob/main/README.md">README（运行说明）</a>
+  <a href="https://github.com/lauwan1981/my-webpage/blob/main/results_octave_full/tables/tables.md">Table 1 与 Table 2</a>
+  <a href="results_octave_full/report.txt">完整报告 report.txt</a>
+  <a href="results_octave_full/figures/figure_captions.txt">图注 figure_captions.txt</a>
+</div>
+
+<h2>运行方法（MATLAB R2015a 及以上，无需工具箱）</h2>
+<pre>cd my-webpage                 % 进入含 run_terra_study.m 的文件夹
+run_terra_study('check');     % 模型自检，几秒
+run_terra_study('quick');     % 全流程冒烟测试，约 5 分钟
+run_terra_study('full');      % 发表用全量运行，约 15 分钟</pre>
+<p class="note">每次运行在当前文件夹下新建 <code>terra_results_v4_&lt;时间戳&gt;</code> 输出目录。代码已在 GNU Octave 10.3 中完整运行；尚未在 MATLAB R2015a 上实际运行，建议先跑 <code>check</code> 和 <code>quick</code>。</p>
+
+<h2>主要结果</h2>
+<table>
+  <tr><th>项目</th><th>结果</th></tr>
+  <tr><td>名义工况 0°、10 ms</td><td>b = 0.70677（1.2456 rad/s），精确时延下稳定，时延裕度 115.6 ms；保证增益裕度 10.66 dB、相位裕度 41.4°</td></tr>
+  <tr><td>驱动角 90°</td><td>b = 0.67241，出现在 37.890 rad/s 的残余模态谷；设计模型给出 0.70375，看不到这个瓶颈</td></tr>
+  <tr><td>确认的主导切换</td><td>驱动角 47.70957°、137.72840°；时延 11.94162 ms；第三悬臂模态 31.0062 rad/s</td></tr>
+  <tr><td>需求违反</td><td>时延 17–30 ms 时 b &lt; 2/3（14/30 个路径点）；中心惯量 ×0.8 时 b ≈ 0.649；第三模态 ×0.8、90° 时 b = 0.628</td></tr>
+  <tr><td>整改规则（26 例，Top-1 / Top-2 找到最优）</td><td>branch-aware 17 / 26；spectrum-aware 22 / 26；字面 active-set 8 / 16；常规单穿越 2 / 2</td></tr>
+  <tr><td>Table 2（等误差对比）</td><td>两种方法都检出 140/140 个谷；最大误差 3.3e-16 对 7.8e-7；评估次数中位数 1941 对 32000；墙钟时间中位数 380 ms 对 486 ms（Octave，同一机器）</td></tr>
+  <tr><td>切换位置误差</td><td>方法 ≤ 1.5e-12° 与 1.1e-16 s；密网格最大 7.3e-4° 与 8.5e-10 s</td></tr>
+  <tr><td>Table 1 整改</td><td>90°：rolloff_y −5，b 0.6724 → 0.6826；20 ms：rolloff_z +5，b 0.6314 → 0.6565（仍低于 2/3）</td></tr>
+</table>
+
+<h2>图</h2>
+<figure>
+  <img src="results_octave_full/figures/Fig1_return_difference.png" alt="Figure 1">
+  <figcaption>图 1：全模型与设计模型的加权回差诊断 f_W、全部候选谷与残余差 E_res（0° 与 90°）。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/Fig2_branches_switches.png" alt="Figure 2">
+  <figcaption>图 2：驱动角与时延路径上的谷支、下包络和确认的主导切换（主 W_u 与备选 W_u），以及切换处的单侧割线。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/Fig3_remediation.png" alt="Figure 3">
+  <figcaption>图 3：不变控制器、常规单穿越整改与活动支整改的 f_W、指向误差、指令与精确时延最右根。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/FigS1_cost_comparison.png" alt="Figure S1">
+  <figcaption>图 S1：等误差条件下自适应方法与密网格的评估次数和墙钟时间。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/FigS2_decisions.png" alt="Figure S2">
+  <figcaption>图 S2：各决策规则在全模型上验证的频带最小值，以及不变控制器的精确公共时延裕度。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/FigS3_derivative_convergence.png" alt="Figure S3">
+  <figcaption>图 S3：光滑区单侧割线相对预测方向导数的一阶收敛。</figcaption>
+</figure>
+<figure>
+  <img src="results_octave_full/figures/FigS4_residual_mode_path.png" alt="Figure S4">
+  <figcaption>图 S4：第三悬臂模态频率路径（±20 %）上的谷支与包络，以及时延裕度随驱动角和模态频率的变化。</figcaption>
+</figure>
+
+<p class="note">每张图另有矢量版 EPS，位于 <code>results_octave_full/figures/</code>。数值与图注的完整版本见 report.txt 和 figure_captions.txt。</p>
+</main>
+</body>
+</html>

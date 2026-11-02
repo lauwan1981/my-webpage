@@ -1,0 +1,94 @@
+case,configuration,status,zero_delay_max_real_1_per_s,rightmost_exact_delay_real_1_per_s,delay_margin_ms,critical_frequency_rad_s,search_band_certified,unverified_candidate_roots
+angle 0 deg,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02986574698,115.5744412,9.412823416,1,0
+angle 0 deg,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02986574569,115.6350512,9.411474009,1,0
+angle 0 deg,"full model, damping_x +0.05",stable_exact_delay,-0.02987177491,-0.02986574571,114.3168982,9.498511407,1,0
+angle 0 deg,"full model, rolloff_x +5",stable_exact_delay,-0.02987177489,-0.02986574569,120.0820699,9.418476131,1,0
+angle 15 deg,"design model, unchanged",stable_exact_delay,-0.02951001819,-0.02950880853,115.2178493,9.432434535,1,0
+angle 15 deg,"full model, unchanged",stable_exact_delay,-0.02951001814,-0.02950880848,115.2791113,9.431055818,1,0
+angle 15 deg,"full model, damping_x +0.05",stable_exact_delay,-0.02951001815,-0.02950880848,114.055342,9.512407788,1,0
+angle 15 deg,"full model, rolloff_x +5",stable_exact_delay,-0.02951001814,-0.02950880848,119.4078654,9.437565687,1,0
+angle 30 deg,"design model, unchanged",stable_exact_delay,-0.02942722387,-0.02942711587,113.9441661,9.503417054,1,0
+angle 30 deg,"full model, unchanged",stable_exact_delay,-0.02942722387,-0.02942711587,114.0078473,9.501927994,1,0
+angle 30 deg,"full model, damping_x +0.05",stable_exact_delay,-0.02942722388,-0.02942711588,113.0381,9.567924201,1,0
+angle 30 deg,"full model, rolloff_x +5",stable_exact_delay,-0.02942722387,-0.02942711587,117.2740138,9.507149733,1,0
+angle 45 deg,"design model, unchanged",stable_exact_delay,-0.02964537496,-0.02964236355,112.0981751,9.608971889,1,0
+angle 45 deg,"full model, unchanged",stable_exact_delay,-0.02964537469,-0.02964236324,112.1656015,9.607306689,1,0
+angle 45 deg,"full model, damping_x +0.05",stable_exact_delay,-0.02964537537,-0.02964236395,111.5317393,9.651907962,1,0
+angle 45 deg,"full model, rolloff_x +5",stable_exact_delay,-0.0296453747,-0.02964236325,114.2931836,9.610788436,1,0
+angle 60 deg,"design model, unchanged",stable_exact_delay,-0.03010662822,-0.03009746731,110.1754219,9.722357573,1,0
+angle 60 deg,"full model, unchanged",stable_exact_delay,-0.03010662574,-0.03009746441,110.2470717,9.720486262,1,0
+angle 60 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03010662922,-0.03009746809,109.9366391,9.743085887,1,0
+angle 60 deg,"full model, rolloff_y -5",stable_exact_delay,-0.03010662571,-0.03009746435,106.047017,9.711297191,1,0
+angle 75 deg,"design model, unchanged",stable_exact_delay,-0.03068820808,-0.03067127237,108.689243,9.81245781,1,0
+angle 75 deg,"full model, unchanged",stable_exact_delay,-0.03068819957,-0.03067126244,108.764401,9.810409486,1,0
+angle 75 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03068820726,-0.03067127055,108.6829816,9.816493561,1,0
+angle 75 deg,"full model, rolloff_y -5",stable_exact_delay,-0.03068819956,-0.03067126242,103.6182296,9.798894545,1,0
+angle 90 deg,"design model, unchanged",stable_exact_delay,-0.03123448956,-0.031210229,108.0360392,9.852746226,1,0
+angle 90 deg,"full model, unchanged",stable_exact_delay,-0.03123447206,-0.03121020859,108.1128127,9.850614713,1,0
+angle 90 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03123448171,-0.03121021876,108.112807,9.850615087,1,0
+angle 90 deg,"full model, rolloff_y -5",stable_exact_delay,-0.03123447206,-0.03121020858,102.6326422,9.838201779,1,0
+angle 105 deg,"design model, unchanged",stable_exact_delay,-0.03159848512,-0.03156933144,108.3902279,9.830838626,1,0
+angle 105 deg,"full model, unchanged",stable_exact_delay,-0.03159845981,-0.0315693019,108.4661262,9.828752442,1,0
+angle 105 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03159846707,-0.03156930957,108.3822156,9.835038602,1,0
+angle 105 deg,"full model, rolloff_y -5",stable_exact_delay,-0.03159845977,-0.03156930184,103.3309527,9.817141503,1,0
+angle 120 deg,"design model, unchanged",stable_exact_delay,-0.03168183952,-0.03165156269,109.6571818,9.753510348,1,0
+angle 120 deg,"full model, unchanged",stable_exact_delay,-0.03168181217,-0.03165153077,109.7300426,9.751578769,1,0
+angle 120 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03168181511,-0.03165153388,109.4161156,9.774600017,1,0
+angle 120 deg,"full model, rolloff_y -5",stable_exact_delay,-0.0316818121,-0.03165153065,105.5422889,9.742251193,1,0
+angle 135 deg,"design model, unchanged",stable_exact_delay,-0.03146201074,-0.03143468959,111.4988696,9.643907846,1,0
+angle 135 deg,"full model, unchanged",stable_exact_delay,-0.03146198843,-0.03143466355,111.5675906,9.642180585,1,0
+angle 135 deg,"full model, damping_x +0.05",stable_exact_delay,-0.0314619888,-0.03143466394,110.931279,9.687375498,1,0
+angle 135 deg,"full model, rolloff_y -5",stable_exact_delay,-0.03146198838,-0.03143466348,108.7154271,9.635975597,1,0
+angle 150 deg,"design model, unchanged",stable_exact_delay,-0.03099851966,-0.03097742178,113.4239775,9.532815171,1,0
+angle 150 deg,"full model, unchanged",stable_exact_delay,-0.03099850632,-0.03097740622,113.4886972,9.531278144,1,0
+angle 150 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03099850635,-0.03097740624,112.5185284,9.597875122,1,0
+angle 150 deg,"full model, rolloff_x +5",stable_exact_delay,-0.03099850632,-0.03097740622,116.7458152,9.536577223,1,0
+angle 165 deg,"design model, unchanged",stable_exact_delay,-0.03041637973,-0.03040307815,114.9168627,9.44905908,1,0
+angle 165 deg,"full model, unchanged",stable_exact_delay,-0.03041637441,-0.03040307193,114.978692,9.447654869,1,0
+angle 165 deg,"full model, damping_x +0.05",stable_exact_delay,-0.03041637454,-0.03040307207,113.7555308,9.529388308,1,0
+angle 165 deg,"full model, rolloff_x +5",stable_exact_delay,-0.03041637441,-0.03040307194,119.0984127,9.454215307,1,0
+angle 180 deg,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02986574698,115.5744412,9.412823416,1,0
+angle 180 deg,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02986574569,115.6350512,9.411474009,1,0
+angle 180 deg,"full model, damping_x +0.05",stable_exact_delay,-0.02987177491,-0.02986574571,114.3168982,9.498511407,1,0
+angle 180 deg,"full model, rolloff_x +5",stable_exact_delay,-0.02987177489,-0.02986574569,120.0820699,9.418476131,1,0
+delay 12 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02986431971,115.5744412,9.412823416,1,0
+delay 12 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02986431838,115.6350512,9.411474009,1,0
+delay 12 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.0298692626,115.6352593,9.411474318,1,0
+delay 14 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02986281746,115.5744412,9.412823416,1,0
+delay 14 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.0298628161,115.6350512,9.411474009,1,0
+delay 14 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.02986793973,115.6352593,9.411474318,1,0
+delay 16 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02986123979,115.5744412,9.412823416,1,0
+delay 16 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.0298612384,115.6350512,9.411474009,1,0
+delay 16 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.02986654223,115.6352593,9.411474318,1,0
+delay 18 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02985958625,115.5744412,9.412823416,1,0
+delay 18 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02985958482,115.6350512,9.411474009,1,0
+delay 18 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.02986506961,115.6352593,9.411474318,1,0
+delay 20 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02985785641,115.5744412,9.412823416,1,0
+delay 20 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02985785495,115.6350512,9.411474009,1,0
+delay 20 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.02986352141,115.6352593,9.411474318,1,0
+delay 22 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02985604987,115.5744412,9.412823416,1,0
+delay 22 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02985604837,115.6350512,9.411474009,1,0
+delay 22 ms,"full model, rolloff_z +5",stable_exact_delay,-0.02987566174,-0.02986189717,115.6352593,9.411474318,1,0
+delay 25 ms,"design model, unchanged",stable_exact_delay,-0.02987177599,-0.02985319537,115.5744412,9.412823416,1,0
+delay 25 ms,"full model, unchanged",stable_exact_delay,-0.02987177489,-0.02985319382,115.6350512,9.411474009,1,0
+delay 25 ms,"full model, damping_z -0.05",stable_exact_delay,-0.0298182434,-0.02979835716,115.6351197,9.41147006,1,0
+"mode3 x0.80, 0 deg","design model, unchanged",stable_exact_delay,-0.02987082577,-0.02986479985,115.9549001,9.394587343,1,0
+"mode3 x0.80, 0 deg","full model, unchanged",stable_exact_delay,-0.02987082577,-0.02986479985,115.9549001,9.394587343,1,0
+"mode3 x0.80, 0 deg","full model, rolloff_x +5",stable_exact_delay,-0.02987082577,-0.02986479985,120.403565,9.401488777,1,0
+"mode3 x1.20, 0 deg","design model, unchanged",stable_exact_delay,-0.02987228613,-0.0298662553,115.4319756,9.421072016,1,0
+"mode3 x1.20, 0 deg","full model, unchanged",stable_exact_delay,-0.02987228545,-0.02986625452,115.4723891,9.420166554,1,0
+"mode3 x1.20, 0 deg","full model, damping_x +0.05",stable_exact_delay,-0.02987228547,-0.02986625454,114.1501164,9.507696374,1,0
+"hub inertia x0.80, 0 deg","design model, unchanged",stable_exact_delay,-0.03002905899,-0.03002256499,59.48952184,23.1411149,1,0
+"hub inertia x0.80, 0 deg","full model, unchanged",stable_exact_delay,-0.03002905667,-0.03002256223,59.49221442,23.14110807,1,0
+"hub inertia x0.80, 0 deg","full model, rolloff_z +5",stable_exact_delay,-0.03003352711,-0.0300282577,60.66190839,23.1547829,1,0
+"mode3 x0.80, 90 deg","design model, unchanged",stable_exact_delay,-0.03123266349,-0.0312084136,108.3749437,9.830869296,1,0
+"mode3 x0.80, 90 deg","full model, unchanged",stable_exact_delay,-0.0312326634,-0.0312084135,108.5051656,9.827304128,1,0
+"mode3 x0.80, 90 deg","full model, damping_x +0.05",stable_exact_delay,-0.03123267304,-0.03120842367,108.50516,9.827304498,1,0
+"mode3 x0.80, 90 deg","full model, damping_y -0.05",stable_exact_delay,-0.03123266337,-0.03120841347,109.8139325,9.728593201,1,0
+"mode3 x1.20, 90 deg","design model, unchanged",stable_exact_delay,-0.03123545022,-0.03121118134,107.8630273,9.864002073,1,0
+"mode3 x1.20, 90 deg","full model, unchanged",stable_exact_delay,-0.03123543958,-0.03121116891,107.914059,9.862574967,1,0
+"mode3 x1.20, 90 deg","full model, damping_x +0.05",stable_exact_delay,-0.03123544923,-0.03121117909,107.9140533,9.862575345,1,0
+"hub inertia x0.80, 90 deg","design model, unchanged",stable_exact_delay,-0.03186616481,-0.03183998521,59.16038511,23.15631804,1,0
+"hub inertia x0.80, 90 deg","full model, unchanged",stable_exact_delay,-0.03186612809,-0.0318399416,59.16967068,23.15629402,1,0
+"hub inertia x0.80, 90 deg","full model, damping_z -0.05",stable_exact_delay,-0.03157384624,-0.03154215337,68.38477252,23.11585771,1,0
+"hub inertia x0.80, 90 deg","full model, rolloff_z +5",stable_exact_delay,-0.03188414477,-0.03186289423,60.37000124,23.16995922,1,0

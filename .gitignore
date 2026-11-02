@@ -1,0 +1,6 @@
+# Output folders written by run_terra_study (one new folder per run)
+terra_results_v4_*/
+
+# MATLAB autosave and editor backup files
+*.asv
+*.m~

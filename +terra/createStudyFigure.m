@@ -1,0 +1,19 @@
+function figureHandle = createStudyFigure(configuration, heightCentimeters)
+%CREATESTUDYFIGURE Invisible, journal-sized figure with the house style.
+%   figureHandle = terra.createStudyFigure(configuration,
+%   heightCentimeters) creates a double-column-width figure whose paper
+%   size and manual paper position are the declared size in centimetres.
+%   Axes are placed in normalized units (terra.createPanelAxes), so the
+%   exported files keep the declared dimensions and font sizes whatever
+%   the on-screen window size (configuration.figures.screenPositionPixels).
+
+    figures = configuration.figures;
+    width = figures.doubleColumnWidthCentimeters;
+    figureHandle = figure('Visible', 'off', 'Color', 'w', ...
+        'Units', 'pixels', 'Position', figures.screenPositionPixels, ...
+        'PaperUnits', 'centimeters', 'PaperSize', [width, heightCentimeters], ...
+        'PaperPosition', [0, 0, width, heightCentimeters], ...
+        'DefaultAxesFontName', figures.fontName, 'DefaultAxesFontSize', figures.fontSize, ...
+        'DefaultTextFontName', figures.fontName, 'DefaultTextFontSize', figures.fontSize, ...
+        'DefaultLineLineWidth', figures.lineWidth);
+end
